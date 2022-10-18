@@ -39,6 +39,7 @@ npx arc sandbox
 - `-q`, `--quiet`, `quiet` - Disable (most) logging
 - `--disable-symlinks` - Disable symlinking `src/shared` into all functions and
     use file copying instead
+- `--disable-hydrate` - Disable hydrate before starting sandbox
 
 
 ### Environment variables
@@ -86,6 +87,8 @@ Methods may be passed an options object containing the following parameters:
   - Defaults to `true`
   - `false` copies shared code into each Lambda, which can result much slower startup and dependency rehydration speeds
 - `watcher` - **Boolean** - Disable the Sandbox file watcher (and related Sandbox file watcher plugin API)
+  - Defaults to `true`
+- `hydrate` - **Boolean** - Hydrate before starting the sandbox
   - Defaults to `true`
 
 ---

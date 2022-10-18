@@ -13,7 +13,7 @@ module.exports = function getFlags () {
     quiet: [ 'q' ],
     verbose: [ 'v' ],
   }
-  let boolean = [ 'disable-symlinks' ]
+  let boolean = [ 'disable-symlinks', 'hydrate' ]
   let args = minimist(process.argv.slice(2), { alias, boolean })
 
   // Log levels (defaults to `normal` in the updater)
@@ -34,11 +34,14 @@ module.exports = function getFlags () {
   // (pass undefined if not found and let default values take the wheel)
   let symlink = !args['disable-symlinks']
 
+  let hydrate = !args['disable-hydrate']
+
   let flags = {
     port,
     host,
     quiet,
     symlink,
+    hydrate,
   }
   if (logLevel) flags.logLevel = logLevel
   return flags

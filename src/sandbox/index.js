@@ -68,15 +68,19 @@ function _start (params, callback) {
 
     // ... then hydrate Architect project files into functions
     function (callback) {
-      let quiet = logLevel ? false : true
-      if (restart) quiet = true
-      hydrate.shared({ inventory, quiet, symlink }, function next (err) {
-        if (err) callback(err)
-        else {
-          if (!restart) update.verbose.done('Project files hydrated into functions')
-          callback()
-        }
-      })
+      if (params.hydrate) {
+        let quiet = logLevel ? false : true
+        if (restart) quiet = true
+        hydrate.shared({ inventory, quiet, symlink }, function next (err) {
+          if (err) callback(err)
+          else {
+            if (!restart) update.verbose.done('Project files hydrated into functions')
+            callback()
+          }
+        })
+      } else {
+        return callback()
+      }
     },
 
     // Pretty print routes, startup time, aws-sdk installatation status, etc.

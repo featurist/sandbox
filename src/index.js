@@ -16,6 +16,7 @@ function start (params, callback) {
   params.cwd = params.cwd || process.cwd()
   params.symlink = params.symlink !== undefined ? params.symlink : true
   params.update = update = updater('Sandbox', { logLevel, quiet })
+  params.hydrate = params.hydrate !== undefined ? params.hydrate : true
 
   // Set up promise if there's no callback
   let promise
